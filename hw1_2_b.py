@@ -1,4 +1,5 @@
 import sys
+import time
 
 def main(file_path, threshold):
     item_baskets = []
@@ -51,12 +52,11 @@ def main(file_path, threshold):
         conf_2_1 = count / count2
         print(f'{item1}\t{item2}\t{count}\t{conf_1_2:.6f}\t{conf_2_1:.6f}')
 
-begin = time.time()
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: script.py <file>")
+    begin = time.time()
+    if len(sys.argv) != 3:
+        print("Usage: script.py <file> <threshold>")
         sys.exit(1)
-    main(sys.argv[1], 100)
-
-end = time.time()
-print(f"Total time: {(end - begin):.6f} seconds")
+    main(sys.argv[1], int(sys.argv[2]))
+    end = time.time()
+    print(f"Total time: {(end - begin):.6f} seconds")
