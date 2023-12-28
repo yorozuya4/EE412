@@ -1,4 +1,5 @@
 import sys
+import time
 from pyspark import SparkConf, SparkContext
 
 def main(file_path):
@@ -25,12 +26,11 @@ def main(file_path):
         for ((user1, user2), count) in top_ten:
             print(f"{user1}\t{user2}\t{count}")
 
-begin = time.time()
 if __name__ == "__main__":
+    begin = time.time()
     if len(sys.argv) != 2:
         print("Usage: script.py <file>")
         sys.exit(1)
     main(sys.argv[1])
-end = time.time()
-
-print(f"Total time: {(end - begin):.6f} seconds")
+    end = time.time()
+    print(f"Total time: {(end - begin):.6f} seconds")
